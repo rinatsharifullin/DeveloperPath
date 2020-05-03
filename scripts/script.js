@@ -57,6 +57,7 @@ $(document).ready(function(){
     // Open modal window with map
     $('.contactus>p').click(function(){
         $('#modalmap').removeClass('close');
+        $('#modalmap').append('<iframe title="Map of training center" src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d9515.491345629065!2d-6.2885705!3d53.3992146!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x7baa038425845b41!2sFinglas%20Training%20Centre%20CDETB!5e0!3m2!1sen!2sie!4v1587716132777!5m2!1sen!2sie" width="640" height="360" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>');
     });
     // Close modal window with map
     window.onclick = function(event) {
@@ -70,17 +71,10 @@ $(document).ready(function(){
 
 
     // Click on testimonia bullets
-    $('#testimonial-bullets').click(function(e){
-        clearTimeout(myTimer);                                             //Variable to identify image position
-        switch(e.target.id){                                            //Extract clicked button id
-            case 'zero': numberTestim=0; break;                     //Select futton and assign position
-            case 'one': numberTestim=1; break;
-            case 'two': numberTestim=2; break;
-            case 'three': numberTestim=3; break;
-            case 'four': numberTestim=4; break;
-            case 'five': numberTestim=5; break;
-        }
-        testimonialSlider(numberTestim);
+    $('.testimonial-bullets').click(function(e){
+        clearTimeout(myTimer);                                      //Stop timer
+        numberTestim=$('.testimonial-bullets p').index(e.target)    //Assign clicked child position
+        testimonialSlider(numberTestim);                            //Start new timer
 
     });
 
@@ -118,12 +112,12 @@ function backgroungImgQuotes(nextSlideData){
 
 // Testimonial slider
 function testimonialSlider(nextSlideData){
-     $('#testimonial>p').animate({'opacity': 0});                                   //Fade out previous qoute
-    $('#testimonial-bullets p').css('color', '#fff');                               //All bullets colour to white
+    $('.testimonial>p').animate({'opacity': 0});                                   //Fade out previous qoute
+    $('.testimonial-bullets p').css('color', '#fff');                               //All bullets colour to white
     nextSlideData = numberTestim;                                                   //Assign next image number
-    $('#testimonial-bullets p:eq(' + nextSlideData + ')').css('color', '#B80924');  //Colour our bullet to red
-    $('#testimonial>p:eq(' + nextSlideData + ')').animate({'opacity': 1});          //Fade in next quote
+    $('.testimonial-bullets p:eq(' + nextSlideData + ')').css('color', '#B80924');  //Colour our bullet to red
+    $('.testimonial>p:eq(' + nextSlideData + ')').animate({'opacity': 1});          //Fade in next quote
     numberTestim++;                                                                 //Iterate next position
-    if (numberTestim>6){numberTestim=0; };                                          //If iterator exceed 6 quotes, reset to zero
+    if (numberTestim>5){numberTestim=0; };                                          //If iterator exceed 6 quotes, reset to zero
     myTimer = setTimeout(testimonialSlider, 10000, numberTestim)                    //Start timeout
 }

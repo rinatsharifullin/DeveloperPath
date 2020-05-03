@@ -8,7 +8,10 @@ $(document).ready(function(){
     var allPanels = $('.accordion h2').nextUntil('h2').hide();
 
     // Accordion function
-    $('.accordion  h2').click(function() {
+    $('.accordion  h2').click(function(e) {
+        if($(e.target).text() == 'Car Park'){       //Click first h2, adding heavy video source for college page.
+            $('video').append('<source src="video/carpark.mp4" type="video/mp4"></source>');
+        }
         if($(this).nextUntil('h2').is(':visible')){     //If click header with visible content
             allPanels.slideUp();                        //Slide up all headers
             $('.accordion h2').addClass('unselected').removeClass('selected');  //Make + visible and hide - sign
