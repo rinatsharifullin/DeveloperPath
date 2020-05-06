@@ -78,6 +78,73 @@ $(document).ready(function(){
 
     });
 
+     // Animate counter on scroll
+    $(window).scroll(function(){
+        if($('#stats').length){
+        if((document.getElementById('stats').getBoundingClientRect().top -$(window).innerHeight() + $('#stats').innerHeight()/3*2)<0){  //element must be 2/3 visible from bottom to start function
+            $('#stats').css('opacity', 1);
+                $({ Counter: 1991 }).animate({ Counter: $('#year').text() }, {
+                    duration: 2000,
+                    easing: 'swing',
+                    step: function () {
+                        $('#year').text(Math.ceil(this.Counter));
+                    }
+                });
+                $({ Counter: 0 }).animate({ Counter: $('#courses').text() }, {
+                    duration: 2000,
+                    easing: 'swing',
+                    step: function () {
+                        $('#courses').text(Math.ceil(this.Counter));
+                    }
+                });
+                $({ Counter: 400 }).animate({ Counter: $('#students').text() }, {
+                    duration: 2000,
+                    easing: 'swing',
+                    step: function () {
+                        $('#students').text(Math.ceil(this.Counter));
+                    }
+                });
+        
+                $(window).off('scroll');    //Run once
+            }
+        }
+    });
+
+    // Course page, Student page, College page
+    
+    // Make + sign visible
+    if($('.accordion  h2').length){
+        $('.accordion  h2').addClass('unselected');
+        // Hide all under h2 elements until next h2
+        var allPanels = $('.accordion h2').nextUntil('h2').hide();
+    }
+    // Accordion function
+    $('.accordion  h2').click(function(e) {
+        if($(e.target).text() == 'Car Park'){       //Click first h2, adding heavy video source for college page.
+            $('video').append('<source src="video/carpark.mp4" type="video/mp4"></source>');
+        }
+        if($(this).nextUntil('h2').is(':visible')){     //If click header with visible content
+            allPanels.slideUp();                        //Slide up all headers
+            $('.accordion h2').addClass('unselected').removeClass('selected');  //Make + visible and hide - sign
+            return false;                               //Stop function. Prevent to toggle classes by following code
+        }else{                                          //If click any unopened header
+            allPanels.slideUp();                        //Slide up all headers
+            $('.accordion h2').addClass('unselected').removeClass('selected');  //Make + visible and hide - sign
+        };
+        $(this).nextUntil('h2').slideDown();            //Slide down elements p and img
+        $(this).toggleClass('selected unselected');     //Toggle classes to make - visible and hide + sign
+        
+    });
+
+    // Contact page
+    // Run Video on top of map
+    $('#map-video').delay(13000).queue(function(){                          //Delay 13s, duration of video
+        $(this).animate({'opacity':0},1000).delay(1000).queue(function(){   //Fade out for 1s
+            $(this).css('display', 'none');                                 //Hide video
+            $(this).dequeue();
+        });
+        $(this).dequeue();
+    })
 
 });
 // Variables

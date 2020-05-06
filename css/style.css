@@ -34,12 +34,10 @@ header{
     position: relative;
     color: white;
     padding: 2vh 2vw;
-    /* overflow: hidden; */
 }
 .top{
     max-width: 1366px;
     margin: auto;
-    
 }
 .top>div{
     display: flex;
@@ -49,7 +47,6 @@ header{
     transition: transform 1s ease;
 }
 /* Style logo and navigation */
-
 #hamburger-icon{
     font-size: 3em;
     cursor: pointer;
@@ -64,7 +61,7 @@ nav{
     display: flex;
     flex-direction: column;
     background-color: rgba(0, 0, 0, 0.753);
-    position: relative;
+    /* position: relative; */
 }
 nav a{
     border-bottom: 1px solid white;
@@ -87,7 +84,7 @@ nav a{
     top: 25%;
     left: 50%;
     transform: translate(-50%, -50%);
-    object-fit: cover;
+    /* object-fit: cover; */
     min-width: 100%;
     min-height: 100%;
     opacity: 0;
@@ -119,10 +116,9 @@ main{
 .container{
     margin: auto;
     max-width: 1366px;
-    /* background-color: rgba(216, 216, 216, 0.37); */
     text-align: center;
 }
-.container p{
+.container p, #text-about p{
     text-align: left;
     padding: 2vh 2vw;
 }
@@ -133,10 +129,6 @@ main{
 }
 
 /* Style home page about */
-#text-about p{
-    text-align: left;
-    padding: 2vh 2vw;
-}
 #about img{
     width: 100%;
     height: 100%;
@@ -186,9 +178,7 @@ main{
     cursor: pointer;
     margin: 0;
 }
-.accordion img, .accordion p .accordion video{
-    /* display: none; */
-}
+
 .accordion a{
     text-decoration: underline;
     color: #212121;
@@ -234,6 +224,7 @@ img[src="images/employer.jpg"], #my-video{
     box-sizing: border-box;
     text-align: left;
 }
+
 .message{
     width: 100%;
     height: 200px;
@@ -315,7 +306,6 @@ footer{
     color: #C4C4C4;
 }
 .contactus a:nth-child(2)::before, .contactus p:nth-child(3)::before, .contactus a:nth-child(8)::before, .contactus a:nth-child(10)::before{
-    /* text-indent: -10px; */
     content:"";
     display: block;
     width: 20px;
@@ -336,8 +326,6 @@ footer{
     background: url(../icons/facebook-f-brands.svg) no-repeat;
 }
 /* Modal map styling */
-
-
 #modalmap iframe{
     position: fixed;
     top: 50%;
@@ -613,10 +601,6 @@ footer{
     
     
 /* -------------------------------------------------------------------------------------------- */
-
-
-
-
 
     /* Styling footer */
     .wrapper{
